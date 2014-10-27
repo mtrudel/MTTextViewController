@@ -1,15 +1,35 @@
 # MTTextViewController
 
-[![CI Status](http://img.shields.io/travis/Mat Trudel/MTTextViewController.svg?style=flat)](https://travis-ci.org/Mat Trudel/MTTextViewController)
-[![Version](https://img.shields.io/cocoapods/v/MTTextViewController.svg?style=flat)](http://cocoadocs.org/docsets/MTTextViewController)
-[![License](https://img.shields.io/cocoapods/l/MTTextViewController.svg?style=flat)](http://cocoadocs.org/docsets/MTTextViewController)
-[![Platform](https://img.shields.io/cocoapods/p/MTTextViewController.svg?style=flat)](http://cocoadocs.org/docsets/MTTextViewController)
+A simple delegate-based controller for presenting editable text on iOS.
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+In your presenting view controller, do:
+
+```objc
+
+- (IBAction)editNote {
+  MTTextViewController *textViewController = [[MTTextViewController alloc] initWithText:self.noteText];
+  textViewController.title = @"Edit Note";
+  textViewController.delegate = self;
+  // You can also push it on a navigation controller if you'd like
+  [self presentViewController:[[UINavigationController alloc] initWithRootViewController:textViewController] animated:YES completion:nil];
+}
+
+- (void)textViewControllerDidFinish:(MTTextViewController *)controller {
+  self.noteText = controller.text;
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)textViewControllerDidCancel:(MTTextViewController *)controller {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+```
 
 ## Requirements
+
+iOS 7 or greater.
 
 ## Installation
 
