@@ -61,7 +61,8 @@
 }
 
 - (void)keyboardWillBeHidden:(NSNotification*)aNotification {
-  UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+  UIEdgeInsets contentInsets = self.textView.contentInset;
+  contentInsets.bottom = 0;
   self.textView.contentInset = contentInsets;
   self.textView.scrollIndicatorInsets = contentInsets;
 }
