@@ -8,7 +8,7 @@
 #import "MTTextViewController.h"
 
 @interface MTTextViewController ()
-@property (nonatomic, strong) UITextView *textView;
+@property UITextView *textView;
 @end
 
 @implementation MTTextViewController

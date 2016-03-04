@@ -15,8 +15,8 @@
 @end
 
 @interface MTTextViewController : UIViewController
-@property (nonatomic, weak) id<MTTextViewControllerDelegate> delegate;
-@property (nonatomic, readonly) NSString *text;
+@property(weak) id<MTTextViewControllerDelegate> delegate;
+@property(readonly) NSString *text;
 
 - (instancetype)initWithText:(NSString *)text;
 
