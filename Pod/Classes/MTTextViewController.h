@@ -17,6 +17,7 @@
 @interface MTTextViewController : UIViewController
 @property(weak) id<MTTextViewControllerDelegate> delegate;
 @property(readonly) NSString *text;
+@property NSInteger characterLimit;
 
 - (instancetype)initWithText:(NSString *)text;
 
