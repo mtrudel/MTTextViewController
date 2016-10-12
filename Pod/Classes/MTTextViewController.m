@@ -15,20 +15,24 @@
 
 - (instancetype)initWithText:(NSString *)text {
   if (self = [super initWithNibName:nil bundle:nil]) {
-    self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
+    [self setupNavigationItem];
+    [self loadViewIfNeeded];
     self.textView.text = text;
-    self.textView.font = [UIFont systemFontOfSize:14.];
-    self.textView.delegate = self;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
-    self.navigationItem.rightBarButtonItem.enabled = NO;
   }
   return self;
 }
 
 #pragma mark - Lifecycle methods
 
+- (void)awakeFromNib {
+  [super awakeFromNib];
+  [self setupNavigationItem];
+}
+
 - (void)loadView {
+  self.textView = [[UITextView alloc] initWithFrame:CGRectZero];
+  self.textView.font = [UIFont systemFontOfSize:14.];
+  self.textView.delegate = self;
   self.view = self.textView;
 }
 
@@ -97,6 +101,13 @@
 
 - (NSString *)text {
   return self.textView.text;
+}
+
+- (void)setupNavigationItem
+{
+  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
+  self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done:)];
+  self.navigationItem.rightBarButtonItem.enabled = NO;
 }
 
 @end
