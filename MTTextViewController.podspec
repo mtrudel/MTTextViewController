@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MTTextViewController"
-  s.version      = "1.1.0"
+  s.version      = "1.2.0"
   s.summary      = "A simple delegate based text entry view controller"
   s.homepage     = "https://github.com/mtrudel/MTTextViewController"
   s.license      = 'MIT'
